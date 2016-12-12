@@ -6,7 +6,7 @@ import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
 import {makeExecutableSchema} from 'graphql-tools'
 
 const PORT = 3000
-const MONGO_URL = 'mongodb://localhost:27017/landing'
+const MONGO_URL = 'mongodb://localhost:27017/blog'
 
 const prepare = (o) => {
   o._id = o._id.toString()
