@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "graphql": "^0.8.2",
     "graphql-server-express": "^0.4.3",

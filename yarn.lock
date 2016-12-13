@@ -105,12 +105,6 @@ async-each@^1.0.0:
   version "1.0.1"
   resolved "http://verdaccio.nmr.io/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
-async@2.1.4:
-  version "2.1.4"
-  resolved "http://verdaccio.nmr.io/async/-/async-2.1.4.tgz#2d2160c7788032e4dd6cbe2502f1f9a2c8f6cde4"
-  dependencies:
-    lodash "^4.14.0"
-
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "http://verdaccio.nmr.io/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -574,10 +568,6 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@2.10.2:
-  version "2.10.2"
-  resolved "http://verdaccio.nmr.io/bluebird/-/bluebird-2.10.2.tgz#024a5517295308857f14f91f1106fc3b555f446b"
-
 body-parser@^1.15.2:
   version "1.15.2"
   resolved "http://verdaccio.nmr.io/body-parser/-/body-parser-1.15.2.tgz#d7578cf4f1d11d5f6ea804cef35dc7a7ff6dae67"
@@ -613,10 +603,6 @@ braces@^1.8.2:
     expand-range "^1.8.1"
     preserve "^0.2.0"
     repeat-element "^1.1.2"
-
-bson@~0.5.4, bson@~0.5.7:
-  version "0.5.7"
-  resolved "http://verdaccio.nmr.io/bson/-/bson-0.5.7.tgz#0d11fe0936c1fee029e11f7063f5d0ab2422ea3e"
 
 bson@~1.0.1:
   version "1.0.1"
@@ -711,6 +697,12 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "http://verdaccio.nmr.io/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
+cors@^2.8.1:
+  version "2.8.1"
+  resolved "http://verdaccio.nmr.io/cors/-/cors-2.8.1.tgz#6181aa56abb45a2825be3304703747ae4e9d2383"
+  dependencies:
+    vary "^1"
+
 cryptiles@2.x.x:
   version "2.0.5"
   resolved "http://verdaccio.nmr.io/cryptiles/-/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
@@ -723,7 +715,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-debug@2.2.0, debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
+debug@^2.1.1, debug@^2.2.0, debug@~2.2.0:
   version "2.2.0"
   resolved "http://verdaccio.nmr.io/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
@@ -776,16 +768,6 @@ encodeurl@~1.0.1:
 es6-promise@3.2.1:
   version "3.2.1"
   resolved "http://verdaccio.nmr.io/es6-promise/-/es6-promise-3.2.1.tgz#ec56233868032909207170c39448e24449dd1fc4"
-
-es6-promise@^4.0.3:
-  version "4.0.5"
-  resolved "http://verdaccio.nmr.io/es6-promise/-/es6-promise-4.0.5.tgz#7882f30adde5b240ccfa7f7d78c548330951ae42"
-
-es6-promisify@^5.0.0:
-  version "5.0.0"
-  resolved "http://verdaccio.nmr.io/es6-promisify/-/es6-promisify-5.0.0.tgz#5109d62f3e56ea967c4b63505aef08291c8a5203"
-  dependencies:
-    es6-promise "^4.0.3"
 
 escape-html@~1.0.3:
   version "1.0.3"
@@ -1051,12 +1033,6 @@ graphql-tools@^0.8.3:
   optionalDependencies:
     typed-graphql "^1.0.2"
 
-graphql@^0.7.1:
-  version "0.7.2"
-  resolved "http://verdaccio.nmr.io/graphql/-/graphql-0.7.2.tgz#cc894a32823399b8a0cb012b9e9ecad35cd00f72"
-  dependencies:
-    iterall "1.0.2"
-
 graphql@^0.8.2:
   version "0.8.2"
   resolved "http://verdaccio.nmr.io/graphql/-/graphql-0.8.2.tgz#eb1bb524b38104bbf2c9157f9abc67db2feba7d2"
@@ -1101,10 +1077,6 @@ home-or-tmp@^2.0.0:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.1"
-
-hooks-fixed@1.2.0:
-  version "1.2.0"
-  resolved "http://verdaccio.nmr.io/hooks-fixed/-/hooks-fixed-1.2.0.tgz#0d2772d4d7d685ff9244724a9f0b5b2559aac96b"
 
 http-errors@~1.5.0:
   version "1.5.1"
@@ -1292,17 +1264,13 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.3.6"
 
-kareem@1.1.3:
-  version "1.1.3"
-  resolved "http://verdaccio.nmr.io/kareem/-/kareem-1.1.3.tgz#0877610d8879c38da62d1dbafde4e17f2692f041"
-
 kind-of@^3.0.2:
   version "3.1.0"
   resolved "http://verdaccio.nmr.io/kind-of/-/kind-of-3.1.0.tgz#475d698a5e49ff5e53d14e3e732429dc8bf4cf47"
   dependencies:
     is-buffer "^1.0.2"
 
-lodash@^4.14.0, lodash@^4.2.0, lodash@^4.3.0:
+lodash@^4.2.0, lodash@^4.3.0:
   version "4.17.2"
   resolved "http://verdaccio.nmr.io/lodash/-/lodash-4.17.2.tgz#34a3055babe04ce42467b607d700072c7ff6bf42"
 
@@ -1376,27 +1344,12 @@ minimist@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-mongodb-core@2.0.14:
-  version "2.0.14"
-  resolved "http://verdaccio.nmr.io/mongodb-core/-/mongodb-core-2.0.14.tgz#4e8743b87343d169a7622535edbd47dcacd790be"
-  dependencies:
-    bson "~0.5.7"
-    require_optional "~1.0.0"
-
 mongodb-core@2.1.2:
   version "2.1.2"
   resolved "http://verdaccio.nmr.io/mongodb-core/-/mongodb-core-2.1.2.tgz#a11db773d34819cbeb97751241827137ab535aab"
   dependencies:
     bson "~1.0.1"
     require_optional "~1.0.0"
-
-mongodb@2.2.12:
-  version "2.2.12"
-  resolved "http://verdaccio.nmr.io/mongodb/-/mongodb-2.2.12.tgz#2a86f10228f911e9d6fefdbd7d922188d7b730f9"
-  dependencies:
-    es6-promise "3.2.1"
-    mongodb-core "2.0.14"
-    readable-stream "2.1.5"
 
 mongodb@^2.2.15:
   version "2.2.15"
@@ -1406,57 +1359,9 @@ mongodb@^2.2.15:
     mongodb-core "2.1.2"
     readable-stream "2.1.5"
 
-mongoose-schema-to-graphql@^2.4.5:
-  version "2.4.5"
-  resolved "http://verdaccio.nmr.io/mongoose-schema-to-graphql/-/mongoose-schema-to-graphql-2.4.5.tgz#aad442e66e689c681c8e3766d82f37617593af76"
-  dependencies:
-    graphql "^0.7.1"
-
-mongoose@^4.7.2:
-  version "4.7.2"
-  resolved "http://verdaccio.nmr.io/mongoose/-/mongoose-4.7.2.tgz#e8ed06353c918169bec886cdc0c2077a93682faa"
-  dependencies:
-    async "2.1.4"
-    bson "~0.5.4"
-    hooks-fixed "1.2.0"
-    kareem "1.1.3"
-    mongodb "2.2.12"
-    mpath "0.2.1"
-    mpromise "0.5.5"
-    mquery "2.0.0"
-    ms "0.7.2"
-    muri "1.1.1"
-    regexp-clone "0.0.1"
-    sliced "1.0.1"
-
-mpath@0.2.1:
-  version "0.2.1"
-  resolved "http://verdaccio.nmr.io/mpath/-/mpath-0.2.1.tgz#3a4e829359801de96309c27a6b2e102e89f9e96e"
-
-mpromise@0.5.5:
-  version "0.5.5"
-  resolved "http://verdaccio.nmr.io/mpromise/-/mpromise-0.5.5.tgz#f5b24259d763acc2257b0a0c8c6d866fd51732e6"
-
-mquery@2.0.0:
-  version "2.0.0"
-  resolved "http://verdaccio.nmr.io/mquery/-/mquery-2.0.0.tgz#b5abc850b90dffc3e10ae49b4b6e7a479752df22"
-  dependencies:
-    bluebird "2.10.2"
-    debug "2.2.0"
-    regexp-clone "0.0.1"
-    sliced "0.0.5"
-
 ms@0.7.1:
   version "0.7.1"
   resolved "http://verdaccio.nmr.io/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
-
-ms@0.7.2:
-  version "0.7.2"
-  resolved "http://verdaccio.nmr.io/ms/-/ms-0.7.2.tgz#ae25cf2512b3885a1d95d7f037868d8431124765"
-
-muri@1.1.1:
-  version "1.1.1"
-  resolved "http://verdaccio.nmr.io/muri/-/muri-1.1.1.tgz#64bd904eaf8ff89600c994441fad3c5195905ac2"
 
 nan@^2.3.0:
   version "2.4.0"
@@ -1690,10 +1595,6 @@ regex-cache@^0.4.2:
     is-equal-shallow "^0.1.3"
     is-primitive "^2.0.0"
 
-regexp-clone@0.0.1:
-  version "0.0.1"
-  resolved "http://verdaccio.nmr.io/regexp-clone/-/regexp-clone-0.0.1.tgz#a7c2e09891fdbf38fbb10d376fb73003e68ac589"
-
 regexpu-core@^2.0.0:
   version "2.0.0"
   resolved "http://verdaccio.nmr.io/regexpu-core/-/regexpu-core-2.0.0.tgz#49d038837b8dcf8bfa5b9a42139938e6ea2ae240"
@@ -1818,14 +1719,6 @@ signal-exit@^3.0.0:
 slash@^1.0.0:
   version "1.0.0"
   resolved "http://verdaccio.nmr.io/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
-
-sliced@0.0.5:
-  version "0.0.5"
-  resolved "http://verdaccio.nmr.io/sliced/-/sliced-0.0.5.tgz#5edc044ca4eb6f7816d50ba2fc63e25d8fe4707f"
-
-sliced@1.0.1:
-  version "1.0.1"
-  resolved "http://verdaccio.nmr.io/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
 
 sntp@1.x.x:
   version "1.0.9"
@@ -1976,7 +1869,7 @@ v8flags@^2.0.10:
   dependencies:
     user-home "^1.1.1"
 
-vary@~1.1.0:
+vary@^1, vary@~1.1.0:
   version "1.1.0"
   resolved "http://verdaccio.nmr.io/vary/-/vary-1.1.0.tgz#e1e5affbbd16ae768dd2674394b9ad3022653140"
 

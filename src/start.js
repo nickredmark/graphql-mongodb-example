@@ -3,8 +3,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
 import {makeExecutableSchema} from 'graphql-tools'
+import cors from 'cors'
 
-const PORT = 3000
+const URL = 'http://localhost'
+const PORT = 3001
 const MONGO_URL = 'mongodb://localhost:27017/blog'
 
 const prepare = (o) => {
@@ -92,6 +94,8 @@ export const start = async () => {
 
     const app = express()
 
+    app.use(cors())
+
     app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
 
     app.use('/graphiql', graphiqlExpress({
@@ -99,7 +103,7 @@ export const start = async () => {
     }))
 
     app.listen(PORT, () => {
-      console.log(`Visit http://localhost:${PORT}`)
+      console.log(`Visit ${URL}:${PORT}`)
     })
 
   } catch (e) {
