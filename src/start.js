@@ -98,12 +98,14 @@ export const start = async () => {
 
     app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
 
-    app.use('/graphiql', graphiqlExpress({
+    const homePath = '/graphiql'
+
+    app.use(homePath, graphiqlExpress({
       endpointURL: '/graphql'
     }))
 
     app.listen(PORT, () => {
-      console.log(`Visit ${URL}:${PORT}`)
+      console.log(`Visit ${URL}:${PORT}${homePath}`)
     })
 
   } catch (e) {
