@@ -1,8 +1,8 @@
-import {MongoClient, ObjectId} from 'mongodb'
+import { MongoClient, ObjectId } from 'mongodb'
 import express from 'express'
 import bodyParser from 'body-parser'
-import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
-import {makeExecutableSchema} from 'graphql-tools'
+import { graphqlExpress, graphiqlExpress } from 'graphql-server-express'
+import { makeExecutableSchema } from 'graphql-tools'
 import cors from 'cors'
 
 const URL = 'http://localhost'
@@ -16,10 +16,12 @@ const prepare = (o) => {
 
 export const start = async () => {
   try {
-    const db = await MongoClient.connect(MONGO_URL)
 
-    const Posts = db.collection('posts')
-    const Comments = db.collection('comments')
+    MongoClient.connect(MONGO_URL, (err, database) => {
+      const db = database.db('blog');
+      const Posts = db.collection('posts');
+      const Comments = db.collection('comments');
+    });
 
     const typeDefs = [`
       type Query {
@@ -55,34 +57,34 @@ export const start = async () => {
 
     const resolvers = {
       Query: {
-        post: async (root, {_id}) => {
+        post: async (root, { _id }) => {
           return prepare(await Posts.findOne(ObjectId(_id)))
         },
         posts: async () => {
           return (await Posts.find({}).toArray()).map(prepare)
         },
-        comment: async (root, {_id}) => {
+        comment: async (root, { _id }) => {
           return prepare(await Comments.findOne(ObjectId(_id)))
         },
       },
       Post: {
-        comments: async ({_id}) => {
-          return (await Comments.find({postId: _id}).toArray()).map(prepare)
+        comments: async ({ _id }) => {
+          return (await Comments.find({ postId: _id }).toArray()).map(prepare)
         }
       },
       Comment: {
-        post: async ({postId}) => {
+        post: async ({ postId }) => {
           return prepare(await Posts.findOne(ObjectId(postId)))
         }
       },
       Mutation: {
         createPost: async (root, args, context, info) => {
           const res = await Posts.insert(args)
-          return prepare(await Posts.findOne({_id: res.insertedIds[1]}))
+          return prepare(await Posts.findOne({ _id: res.insertedIds[1] }))
         },
         createComment: async (root, args) => {
           const res = await Comments.insert(args)
-          return prepare(await Comments.findOne({_id: res.insertedIds[1]}))
+          return prepare(await Comments.findOne({ _id: res.insertedIds[1] }))
         },
       },
     }
@@ -96,7 +98,7 @@ export const start = async () => {
 
     app.use(cors())
 
-    app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
+    app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
 
     const homePath = '/graphiql'
 
