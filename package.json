@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "startdev": "nodemon --exec babel-node src/index.js",
     "start": "node dist/index.js",
     "build": "babel -d dist/ src/",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +25,7 @@
     "graphql": "^0.8.2",
     "graphql-server-express": "^0.4.3",
     "graphql-tools": "^0.8.3",
-    "mongodb": "^2.2.15"
+    "mongodb": "^2.2.15",
+    "nodemon": "^1.18.3"
   }
 }

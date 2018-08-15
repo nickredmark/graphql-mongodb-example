@@ -4,15 +4,19 @@ import bodyParser from 'body-parser'
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
 import {makeExecutableSchema} from 'graphql-tools'
 import cors from 'cors'
+import {prepare} from "../utill/index"
 
+
+const app = express()
+
+app.use(cors())
+
+const homePath = '/graphiql'
 const URL = 'http://localhost'
 const PORT = 3001
 const MONGO_URL = 'mongodb://localhost:27017/blog'
 
-const prepare = (o) => {
-  o._id = o._id.toString()
-  return o
-}
+
 
 export const start = async () => {
   try {
@@ -92,13 +96,9 @@ export const start = async () => {
       resolvers
     })
 
-    const app = express()
-
-    app.use(cors())
 
     app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
 
-    const homePath = '/graphiql'
 
     app.use(homePath, graphiqlExpress({
       endpointURL: '/graphql'
