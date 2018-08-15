@@ -9,3 +9,9 @@ yarn install
 yarn run build
 yarn start
 ```
+
+For Local Development 
+
+```
+npm run startdev
+```
