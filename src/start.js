@@ -81,8 +81,8 @@ export const start = async () => {
       },
       Mutation: {
         createPost: async (root, args, context, info) => {
-          const res = await Posts.insert(args)
-          return prepare(await Posts.findOne({_id: res.insertedIds[1]}))
+          const res = await Posts.insertOne(args)
+          return prepare(res.ops[0])  // https://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
         },
         createComment: async (root, args) => {
           const res = await Comments.insert(args)
