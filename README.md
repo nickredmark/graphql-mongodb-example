@@ -12,6 +12,8 @@ yarn start
 
 For Local Development 
 
+You need to start Mongodb for Local development 
+
 ```
 npm run startdev
 ```
