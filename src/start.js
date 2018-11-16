@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
 import {makeExecutableSchema} from 'graphql-tools'
 import cors from 'cors'
-import {prepare} from "../utill/index"
+import {prepare} from "../util/index"
 
 
 const app = express()
