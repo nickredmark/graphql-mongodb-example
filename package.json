@@ -9,7 +9,7 @@
     "build": "babel -d dist/ src/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Nicola Marcacci Rossi <nicolamr@gmail.com> (http://nmr.io)",
+  "author": "Nick Redmark",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.18.0",
