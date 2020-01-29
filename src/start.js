@@ -1,31 +1,26 @@
-import {MongoClient, ObjectId} from 'mongodb'
-import express from 'express'
-import bodyParser from 'body-parser'
-import {graphqlExpress, graphiqlExpress} from 'graphql-server-express'
-import {makeExecutableSchema} from 'graphql-tools'
-import cors from 'cors'
-import {prepare} from "../util/index"
+import { MongoClient, ObjectId } from 'mongodb'
+import Koa from 'koa'
+import koaBody from 'koa-bodyparser'
+import { ApolloServer, gql } from 'apollo-server-koa'
+import { prepare } from '../util/index'
 
+const app = new Koa()
 
-const app = express()
-
-app.use(cors())
-
-const homePath = '/graphiql'
+const homePath = '/graphql'
 const URL = 'http://localhost'
 const PORT = 3001
 const MONGO_URL = 'mongodb://localhost:27017/blog'
 
-
-
 export const start = async () => {
   try {
-    const db = await MongoClient.connect(MONGO_URL)
+    const database = await MongoClient.connect(MONGO_URL, {
+      useUnifiedTopology: true,
+    })
 
-    const Posts = db.collection('posts')
-    const Comments = db.collection('comments')
+    const Posts = database.db().collection('posts')
+    const Comments = database.db().collection('comments')
 
-    const typeDefs = [`
+    const typeDefs = gql`
       type Query {
         post(_id: String): Post
         posts: [Post]
@@ -55,61 +50,51 @@ export const start = async () => {
         query: Query
         mutation: Mutation
       }
-    `];
+    `
 
     const resolvers = {
       Query: {
-        post: async (root, {_id}) => {
+        post: async (root, { _id }) => {
           return prepare(await Posts.findOne(ObjectId(_id)))
         },
         posts: async () => {
           return (await Posts.find({}).toArray()).map(prepare)
         },
-        comment: async (root, {_id}) => {
+        comment: async (root, { _id }) => {
           return prepare(await Comments.findOne(ObjectId(_id)))
         },
       },
       Post: {
-        comments: async ({_id}) => {
-          return (await Comments.find({postId: _id}).toArray()).map(prepare)
-        }
+        comments: async ({ _id }) => {
+          return (await Comments.find({ postId: _id }).toArray()).map(prepare)
+        },
       },
       Comment: {
-        post: async ({postId}) => {
+        post: async ({ postId }) => {
           return prepare(await Posts.findOne(ObjectId(postId)))
-        }
+        },
       },
       Mutation: {
         createPost: async (root, args, context, info) => {
           const res = await Posts.insertOne(args)
-          return prepare(res.ops[0])  // https://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
+          return prepare(res.ops[0]) // https://mongodb.github.io/node-mongodb-native/3.1/api/Collection.html#~insertOneWriteOpResult
         },
         createComment: async (root, args) => {
           const res = await Comments.insert(args)
-          return prepare(await Comments.findOne({_id: res.insertedIds[1]}))
+          return prepare(await Comments.findOne({ _id: res.insertedIds[1] }))
         },
       },
     }
 
-    const schema = makeExecutableSchema({
-      typeDefs,
-      resolvers
-    })
+    app.use(koaBody())
 
+    const server = new ApolloServer({ typeDefs, resolvers })
+    server.applyMiddleware({ app })
 
-    app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
-
-
-    app.use(homePath, graphiqlExpress({
-      endpointURL: '/graphql'
-    }))
-
-    app.listen(PORT, () => {
+    app.listen({ port: PORT }, () => {
       console.log(`Visit ${URL}:${PORT}${homePath}`)
     })
-
   } catch (e) {
     console.log(e)
   }
-
 }
