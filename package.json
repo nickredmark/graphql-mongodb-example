@@ -25,7 +25,7 @@
     "graphql": "^0.8.2",
     "graphql-server-express": "^0.4.3",
     "graphql-tools": "^0.8.3",
-    "mongodb": "^2.2.15",
+    "mongodb": "^3.1.13",
     "nodemon": "^1.18.3"
   }
 }
